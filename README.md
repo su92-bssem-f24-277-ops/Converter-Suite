@@ -1,23 +1,23 @@
-# Tic-Tac-Toe Game
+# Converter Suite
 
-A desktop Tic-Tac-Toe game for two local players, built with Java Swing. The interface pairs a 3 x 3 game board with player score displays and simple controls for starting a new match, resetting a round, or exiting.
+A Java Swing desktop application that combines three practical utilities in one project: an age calculator, a temperature converter, and a weight converter. Each tool is designed to be easy to use, fast to understand, and ideal for educational or personal productivity projects.
 
 ## Overview
 
-Players take turns placing X and O on the board. The game checks each move for a winning line or a draw, then announces the result in a dialog. Scores are tracked separately for each player while the application is open.
+This project provides a compact desktop utility suite for everyday calculations. Users can calculate age from a selected birth date, convert values between major temperature units, and switch between common weight measurements without leaving the application.
 
-The window uses a bright blue background, a large title banner, a 3 x 3 grid on the left, and score and game controls on the right.
+The interface uses a clean, beginner-friendly Swing layout with clear labels, combo boxes, input fields, and result displays, making the app suitable for students, beginners, and quick utility use.
 
 ## Features
 
-- Two-player, turn-based gameplay on one device
-- Win detection for all rows, columns, and diagonals
-- Draw detection when all nine squares are occupied
-- X and O win counters for the current application session
-- **New Game** clears the board and both player scores
-- **Reset** clears the current board and starts the next round with X, while preserving scores
-- **Exit** asks for confirmation before closing the application
-- Centered Java Swing window with Nimbus look and feel when available
+- Age calculator with month, day, and year selection
+- Automatic calculation of years, months, and days lived
+- Temperature conversion between Celsius, Fahrenheit, Kelvin, and Rankine
+- Weight conversion between kilogram, gram, pound, and ounce
+- Simple input and output fields for each tool
+- Clear button to reset the current calculation
+- Responsive Java Swing desktop interface
+- Beginner-friendly design built with Apache NetBeans GUI forms
 
 ## Requirements
 
@@ -25,46 +25,60 @@ The window uses a bright blue background, a large title banner, a 3 x 3 grid on 
 - Apache NetBeans with Java and Maven support
 - Apache Maven
 
-The project uses the `AbsoluteLayout` dependency stored in the repository's `lib/` directory and configured through `pom.xml`.
+The project uses the `AbsoluteLayout` dependency stored in the repository's `lib/` directory and configured in `pom.xml`.
 
 ## Build and Run
 
 ### Apache NetBeans
 
 1. Open Apache NetBeans and choose **File > Open Project**.
-2. Select the project folder containing `pom.xml` and allow Maven to load the project and its dependencies.
-3. In the Projects panel, open `src/main/java/com/mycompany/game/TicTacToe.java`.
-4. Right-click `TicTacToe.java` and choose **Run File** to launch the game.
+2. Select the project folder containing `pom.xml`.
+3. Allow Maven to load the project and dependencies.
+4. Open one of the main classes:
+   - `src/main/java/com/mycompany/converter/Age.java`
+   - `src/main/java/com/mycompany/converter/TEMPERATURE.java`
+   - `src/main/java/com/mycompany/converter/weight.java`
+5. Right-click the file and choose **Run File** to launch the selected tool.
 
 ### Command Line
 
-From the project root, build the application with Maven:
+From the project root, build the project with Maven:
 
 ```bash
 mvn clean package
 ```
 
-Launch the desktop game with Maven, specifying its main class:
+Run the individual desktop tools by targeting their main classes:
 
 ```bash
-mvn exec:java -Dexec.mainClass=com.mycompany.game.TicTacToe
+mvn exec:java -Dexec.mainClass=com.mycompany.game.Age
+mvn exec:java -Dexec.mainClass=com.mycompany.game.TEMPERATURE
+mvn exec:java -Dexec.mainClass=com.mycompany.game.weight
 ```
 
-The application starts in a desktop window. A graphical desktop environment is required; this is not a web or command-line game.
+A graphical desktop environment is required to view and interact with the Swing app.
 
-## How to Play
+## How to Use
 
-1. Player X takes the first turn.
-2. Click an empty square to place the current player's mark.
-3. Players alternate turns. The first player to make a line of three matching marks horizontally, vertically, or diagonally wins.
-4. If the board fills without a winning line, the round ends in a draw.
-5. Choose **Reset** to clear the board and keep the scores, or **New Game** to clear both the board and scores.
+### Age Calculator
+1. Select the birth month, day, and year.
+2. Click **Calculator**.
+3. The program displays total years, months, and days.
+
+### Temperature Converter
+1. Choose the source temperature unit.
+2. Enter the value to convert.
+3. Choose the target unit and view the converted result.
+
+### Weight Converter
+1. Select the source weight unit.
+2. Enter the value.
+3. Choose the target unit and view the converted result.
 
 ## Project Structure
 
 ```text
 .
-├── .gitignore
 ├── LICENSE
 ├── lib/
 │   └── unknown/
@@ -78,19 +92,25 @@ The application starts in a desktop window. A graphical desktop environment is r
 │       └── java/
 │           └── com/
 │               └── mycompany/
-│                   └── game/
-│                       ├── TicTacToe.form
-│                       └── TicTacToe.java
-└── README.md
+│                   └── converter/
+│                       ├── Age.form
+│                       ├── Age.java
+│                       ├── TEMPERATURE.form
+│                       ├── TEMPERATURE.java
+│                       ├── weight.form
+│                       └── weight.java
+├── README.md
+└── .gitignore
 ```
 
 | Path | Description |
 | --- | --- |
-| `.gitignore` | Excludes Maven-generated build output from version control |
-| `src/main/java/com/mycompany/game/TicTacToe.java` | Application entry point, Swing interface, and game logic |
-| `src/main/java/com/mycompany/game/TicTacToe.form` | NetBeans GUI form definition |
-| `lib/unknown/binary/AbsoluteLayout/SNAPSHOT/AbsoluteLayout-SNAPSHOT.jar` | Bundled AbsoluteLayout dependency |
-| `pom.xml` | Maven build configuration and dependency declaration |
+| `src/main/java/com/mycompany/converter/Age.java` | Age calculator GUI and logic |
+| `src/main/java/com/mycompany/converter/TEMPERATURE.java` | Temperature conversion tool |
+| `src/main/java/com/mycompany/converter/weight.java` | Weight conversion tool |
+| `src/main/java/com/mycompany/converter/*.form` | NetBeans-generated GUI form files |
+| `pom.xml` | Maven build configuration and dependency setup |
+| `lib/.../AbsoluteLayout-SNAPSHOT.jar` | Swing layout dependency |
 | `LICENSE` | MIT License terms |
 
 ## Technology
@@ -112,4 +132,4 @@ Software Engineering Student
 Lahore, Pakistan  
 Email: [imaliklateef@gmail.com](mailto:imaliklateef@gmail.com)
 
-> Academic portfolio project showcasing Java Swing, object-oriented programming, event-driven interfaces, and game logic.
+> A compact Java desktop utility project for practical calculation tasks in everyday life.
